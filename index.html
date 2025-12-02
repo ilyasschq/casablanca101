@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casablanca101 - Your Guide to Casablanca</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Fixed Navigation Styles - Logo above links */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .logo span {
+            color: #e74c3c;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #e74c3c;
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+        
+        .nav-links a.active {
+            color: #e74c3c;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 12px;
+            right: 12px;
+            height: 3px;
+            background-color: #e74c3c;
+            border-radius: 2px;
+        }
+        
+        /* Section Styles - All sections same size and centered */
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 30px; /* Reduced top padding */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        /* Specifically for contact section - better vertical centering */
+        #contact .section-container {
+            justify-content: center;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        
+        /* Specifically for day trips section - better vertical centering */
+        #daytrips .section-container {
+            justify-content: center;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        
+        /* Specifically for day trips section - adjust for better centering */
+        #daytrips {
+            padding-top: 100px;
+            padding-bottom: 30px;
+            min-height: 100vh;
+            justify-content: center;
+        }
+        
+        /* Specifically for contact section - adjust for better centering */
+        #contact {
+            padding-top: 100px;
+            padding-bottom: 30px;
+            min-height: 100vh;
+            justify-content: center;
+        }
+        
+        /* Reduce margin-top for buttons in day trips section to bring content higher */
+        #daytrips .buttons-container {
+            margin-top: 30px; /* Reduced from 50px */
+        }
+        
+        /* Reduce margin-top for buttons in contact section to bring content higher */
+        #contact .buttons-container {
+            margin-top: 30px; /* Reduced from 50px */
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+        
+        /* Individual Section Styles */
+        #stay {
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #guide {
+            background-color: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #daytrips {
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #contact {
+            background-color: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Universal Button Container - Responsive, fits without scrolling */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 50px;
+            width: 100%;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 10px;
+            flex-wrap: wrap;
+        }
+        
+        /* Button Row - Centers buttons */
+        .buttons-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        
+        /* Contact section - 3 buttons always in same line */
+        #contact .buttons-row {
+            flex-wrap: nowrap; /* Prevent wrapping */
+            justify-content: center;
+            width: 100%;
+        }
+        
+        #contact .section-btn {
+            flex: 1; /* Make buttons equal width */
+            max-width: 300px; /* Maximum width for desktop */
+            min-width: 150px; /* Minimum width for mobile */
+            width: auto; /* Allow flexible width */
+        }
+        
+        /* Guide section - Always 3+2 layout */
+        #guide .buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        #guide .buttons-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            flex-wrap: nowrap; /* Prevent wrapping within rows */
+        }
+        
+        #guide .section-btn {
+            flex: 1;
+            max-width: 300px;
+            min-width: 150px;
+            width: auto;
+            cursor: pointer; /* Make it clear it's clickable */
+        }
+        
+        /* Day trips section - Always 2 buttons in same line */
+        #daytrips .buttons-row {
+            flex-wrap: nowrap; /* Prevent wrapping */
+            justify-content: center;
+            width: 100%;
+        }
+        
+        #daytrips .section-btn {
+            flex: 1;
+            max-width: 400px;
+            min-width: 150px;
+            width: auto;
+        }
+        
+        /* STAY SECTION - Single Airbnb Style Button */
+        .airbnb-apartment-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            text-decoration: none;
+            color: #2c3e50;
+            width: 100%;
+            max-width: 500px;
+            min-height: 280px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 90, 95, 0.1);
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
+        .airbnb-apartment-btn:hover {
+            transform: translateY(-5px);
+            border-color: #FF5A5F;
+            box-shadow: 0 10px 25px rgba(255, 90, 95, 0.2);
+        }
+        
+        .airbnb-apartment-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #FF5A5F, #FF385C);
+        }
+        
+        .airbnb-apartment-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .airbnb-apartment-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            background: linear-gradient(135deg, #FF5A5F, #FF385C);
+            flex-shrink: 0;
+        }
+        
+        .airbnb-apartment-title {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .airbnb-apartment-title h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .airbnb-apartment-title p {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 0;
+        }
+        
+        .airbnb-apartment-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+            width: 100%;
+        }
+        
+        .airbnb-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background-color: #FFF5F5;
+            border-radius: 8px;
+            text-align: left;
+            transition: all 0.2s ease;
+            border-left: 3px solid #FF5A5F;
+        }
+        
+        .airbnb-feature:hover {
+            background-color: #FFEBEE;
+            transform: translateX(3px);
+        }
+        
+        .airbnb-feature-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF5A5F, #FF385C);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .airbnb-feature-text h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 2px;
+        }
+        
+        .airbnb-feature-text p {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 0;
+        }
+        
+        .airbnb-book-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #FF5A5F, #FF385C);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .airbnb-book-btn:hover {
+            background: linear-gradient(135deg, #FF385C, #E51E53);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 90, 95, 0.4);
+        }
+        
+        /* Universal Button Styles - Responsive (for other sections) */
+        .section-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            min-height: 180px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .section-btn:hover {
+            transform: translateY(-5px);
+            border-color: #e74c3c;
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.1);
+        }
+        
+        .btn-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .section-btn h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .section-btn p {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 0;
+            line-height: 1.4;
+            max-width: 280px;
+        }
+        
+        /* Guide Section - 5 Tourist Place Buttons */
+        .guide-icon {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        /* Day Trips Section - 2 Day Trip Buttons */
+        .daytrip-icon {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+        
+        /* Contact Section - 3 Social Media Buttons */
+        .whatsapp-icon {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+        
+        .instagram-icon {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .airbnb-icon {
+            background: linear-gradient(135deg, #FF5A5F, #FF3B41);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .modal-header {
+            padding: 25px 30px 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            color: white;
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #ffdd59;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .modal-body {
+            padding: 25px 30px 30px;
+        }
+        
+        .place-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .place-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        
+        .place-info {
+            text-align: left;
+        }
+        
+        .place-info h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .place-info h3 i {
+            color: #27ae60;
+        }
+        
+        .place-info p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .place-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .place-feature {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: left;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .place-feature h4 {
+            font-size: 1rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .place-feature h4 i {
+            color: #27ae60;
+        }
+        
+        .place-feature p {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 0;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            /* Navigation adjustments for mobile */
+            nav {
+                padding: 12px 0;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                margin-bottom: 8px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+                padding: 6px 10px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 100px 15px 30px; /* Consistent padding for all sections */
+            }
+            
+            /* Fix for daytrips section on mobile */
+            #daytrips {
+                padding-top: 100px; /* Keep consistent padding on mobile too */
+            }
+            
+            /* Fix for contact section on mobile */
+            #contact {
+                padding-top: 100px; /* Keep consistent padding on mobile too */
+            }
+            
+            /* Contact section buttons on mobile - keep in one line */
+            #contact .buttons-row {
+                flex-wrap: nowrap;
+                gap: 10px;
+            }
+            
+            #contact .section-btn {
+                min-height: 160px;
+                padding: 15px 10px;
+                min-width: 120px;
+            }
+            
+            #contact .btn-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+            
+            #contact .section-btn h3 {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+            
+            #contact .section-btn p {
+                font-size: 0.75rem;
+                line-height: 1.2;
+            }
+            
+            /* Guide section buttons on mobile - keep 3+2 layout */
+            #guide .buttons-row {
+                gap: 10px;
+            }
+            
+            #guide .section-btn {
+                min-height: 160px;
+                padding: 15px 10px;
+                min-width: 120px;
+            }
+            
+            #guide .btn-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+            
+            #guide .section-btn h3 {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+            
+            #guide .section-btn p {
+                font-size: 0.75rem;
+                line-height: 1.2;
+            }
+            
+            /* Day trips section buttons on mobile */
+            #daytrips .buttons-row {
+                gap: 10px;
+            }
+            
+            #daytrips .section-btn {
+                min-height: 160px;
+                padding: 15px 10px;
+                min-width: 150px;
+            }
+            
+            #daytrips .btn-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+            
+            #daytrips .section-btn h3 {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+            
+            #daytrips .section-btn p {
+                font-size: 0.75rem;
+                line-height: 1.2;
+            }
+            
+            /* Stay section single button on mobile */
+            .airbnb-apartment-btn {
+                padding: 25px;
+                max-width: 450px;
+                min-height: 260px;
+            }
+            
+            .airbnb-apartment-header {
+                gap: 15px;
+            }
+            
+            .airbnb-apartment-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .airbnb-apartment-title h3 {
+                font-size: 1.4rem;
+            }
+            
+            .airbnb-apartment-title p {
+                font-size: 0.9rem;
+            }
+            
+            .airbnb-apartment-features {
+                gap: 12px;
+            }
+            
+            .airbnb-feature {
+                padding: 10px 12px;
+            }
+            
+            .airbnb-feature-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .airbnb-feature-text h4 {
+                font-size: 0.9rem;
+            }
+            
+            .airbnb-feature-text p {
+                font-size: 0.8rem;
+            }
+            
+            .airbnb-book-btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+            
+            /* Modal adjustments for mobile */
+            .modal-content {
+                width: 95%;
+                max-height: 85vh;
+            }
+            
+            .modal-header {
+                padding: 20px 20px 15px;
+            }
+            
+            .modal-title {
+                font-size: 1.4rem;
+            }
+            
+            .modal-body {
+                padding: 20px 20px 25px;
+            }
+            
+            .place-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Small Mobile: Adjust further */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-links a {
+                font-size: 0.8rem;
+                padding: 5px 8px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            #daytrips {
+                padding-top: 100px; /* Consistent padding */
+            }
+            
+            #contact {
+                padding-top: 100px; /* Consistent padding */
+            }
+            
+            /* Contact section buttons on very small screens */
+            #contact .buttons-row {
+                gap: 8px;
+            }
+            
+            #contact .section-btn {
+                min-height: 150px;
+                padding: 12px 8px;
+                min-width: 100px;
+            }
+            
+            #contact .btn-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            #contact .section-btn h3 {
+                font-size: 0.9rem;
+                margin-bottom: 4px;
+            }
+            
+            #contact .section-btn p {
+                font-size: 0.7rem;
+                line-height: 1.1;
+            }
+            
+            /* Guide section buttons on very small screens */
+            #guide .buttons-row {
+                gap: 8px;
+            }
+            
+            #guide .section-btn {
+                min-height: 150px;
+                padding: 12px 8px;
+                min-width: 100px;
+            }
+            
+            #guide .btn-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            #guide .section-btn h3 {
+                font-size: 0.9rem;
+                margin-bottom: 4px;
+            }
+            
+            #guide .section-btn p {
+                font-size: 0.7rem;
+                line-height: 1.1;
+            }
+            
+            /* Day trips section buttons on very small screens */
+            #daytrips .buttons-row {
+                gap: 8px;
+            }
+            
+            #daytrips .section-btn {
+                min-height: 150px;
+                padding: 12px 8px;
+                min-width: 130px;
+            }
+            
+            #daytrips .btn-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            #daytrips .section-btn h3 {
+                font-size: 0.9rem;
+                margin-bottom: 4px;
+            }
+            
+            #daytrips .section-btn p {
+                font-size: 0.7rem;
+                line-height: 1.1;
+            }
+            
+            .airbnb-apartment-btn {
+                padding: 20px;
+                max-width: 400px;
+                min-height: 240px;
+            }
+            
+            .airbnb-apartment-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .airbnb-apartment-title {
+                text-align: center;
+            }
+            
+            .airbnb-apartment-features {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .airbnb-feature {
+                padding: 8px 10px;
+            }
+            
+            .airbnb-book-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .modal-header {
+                padding: 15px 15px 10px;
+            }
+            
+            .modal-title {
+                font-size: 1.2rem;
+            }
+            
+            .modal-body {
+                padding: 15px 15px 20px;
+            }
+            
+            .place-info h3 {
+                font-size: 1.2rem;
+            }
+            
+            .place-info p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Extra Small Mobile */
+        @media (max-width: 360px) {
+            .airbnb-apartment-btn {
+                padding: 18px 15px;
+                max-width: 350px;
+                min-height: 220px;
+            }
+            
+            .airbnb-apartment-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .airbnb-apartment-title h3 {
+                font-size: 1.2rem;
+            }
+            
+            .airbnb-apartment-title p {
+                font-size: 0.85rem;
+            }
+            
+            /* Contact section on extra small screens */
+            #contact .buttons-row {
+                gap: 5px;
+            }
+            
+            #contact .section-btn {
+                min-height: 140px;
+                padding: 10px 6px;
+                min-width: 90px;
+            }
+            
+            #contact .btn-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+            
+            #contact .section-btn h3 {
+                font-size: 0.8rem;
+            }
+            
+            #contact .section-btn p {
+                font-size: 0.65rem;
+            }
+            
+            /* Guide section on extra small screens */
+            #guide .buttons-row {
+                gap: 5px;
+            }
+            
+            #guide .section-btn {
+                min-height: 140px;
+                padding: 10px 6px;
+                min-width: 90px;
+            }
+            
+            #guide .btn-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+            
+            #guide .section-btn h3 {
+                font-size: 0.8rem;
+            }
+            
+            #guide .section-btn p {
+                font-size: 0.65rem;
+            }
+            
+            /* Day trips section on extra small screens */
+            #daytrips .buttons-row {
+                gap: 5px;
+            }
+            
+            #daytrips .section-btn {
+                min-height: 140px;
+                padding: 10px 6px;
+                min-width: 110px;
+            }
+            
+            #daytrips .btn-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+            
+            #daytrips .section-btn h3 {
+                font-size: 0.8rem;
+            }
+            
+            #daytrips .section-btn p {
+                font-size: 0.65rem;
+            }
+            
+            .airbnb-feature {
+                padding: 7px 9px;
+            }
+            
+            .airbnb-feature-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 0.85rem;
+            }
+            
+            .airbnb-feature-text h4 {
+                font-size: 0.85rem;
+            }
+            
+            .airbnb-feature-text p {
+                font-size: 0.75rem;
+            }
+            
+            .airbnb-book-btn {
+                padding: 7px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .nav-links {
+                gap: 8px;
+            }
+            
+            .nav-links a {
+                font-size: 0.75rem;
+                padding: 4px 6px;
+            }
+        }
+        
+        /* Desktop styles for sections */
+        @media (min-width: 1025px) {
+            .buttons-container {
+                max-width: 1000px;
+            }
+            
+            .buttons-row {
+                flex-wrap: nowrap;
+                gap: 20px;
+            }
+            
+            .section-btn {
+                width: 300px;
+            }
+        }
+        
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .buttons-row {
+                flex-wrap: nowrap;
+                gap: 15px;
+            }
+            
+            .section-btn {
+                width: 250px;
+                padding: 18px 12px;
+                min-height: 170px;
+            }
+            
+            .btn-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+            
+            .section-btn h3 {
+                font-size: 1.1rem;
+            }
+            
+            .section-btn p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation - Logo above links -->
+    <nav>
+        <div class="nav-container">
+            <a href="#stay" class="logo">Casablanca<span>101</span></a>
+            <ul class="nav-links">
+                <li><a href="#stay" class="active">Stay</a></li>
+                <li><a href="#guide">Guide</a></li>
+                <li><a href="#daytrips">One Day Trip</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Stay Section - Single Airbnb-Styled Apartment Button -->
+    <section id="stay">
+        <div class="section-container">
+            <h1>Stay in Casablanca</h1>
+            
+            <!-- Single apartment button -->
+            <div class="buttons-container">
+                <div class="buttons-row">
+                    <!-- City Center Apartment - Single Button -->
+                    <a href="https://airbnb.com/h/apartment-casablanca-morocco" target="_blank" class="airbnb-apartment-btn">
+                        <div class="airbnb-apartment-header">
+                            <div class="airbnb-apartment-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="airbnb-apartment-title">
+                                <h3>City Center Apartment</h3>
+                                <p>Modern apartment in the heart of Casablanca</p>
+                            </div>
+                        </div>
+                        
+                        <div class="airbnb-apartment-features">
+                            <!-- Guests -->
+                            <div class="airbnb-feature">
+                                <div class="airbnb-feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="airbnb-feature-text">
+                                    <h4>Guests</h4>
+                                    <p>Up to 4 people</p>
+                                </div>
+                            </div>
+                            
+                            <!-- WiFi -->
+                            <div class="airbnb-feature">
+                                <div class="airbnb-feature-icon">
+                                    <i class="fas fa-wifi"></i>
+                                </div>
+                                <div class="airbnb-feature-text">
+                                    <h4>WiFi</h4>
+                                    <p>High-speed internet</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Parking -->
+                            <div class="airbnb-feature">
+                                <div class="airbnb-feature-icon">
+                                    <i class="fas fa-parking"></i>
+                                </div>
+                                <div class="airbnb-feature-text">
+                                    <h4>Parking</h4>
+                                    <p>Secure parking available</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Kitchen -->
+                            <div class="airbnb-feature">
+                                <div class="airbnb-feature-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <div class="airbnb-feature-text">
+                                    <h4>Kitchen</h4>
+                                    <p>Fully equipped kitchen</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="airbnb-book-btn">
+                            <i class="fab fa-airbnb"></i>
+                            Book on Airbnb
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Section - 5 Tourist Place Buttons (2 lines: 3 + 2, both centered) -->
+    <section id="guide">
+        <div class="section-container">
+            <h1>Casablanca Guide</h1>
+            
+            <p>Discover the top tourist attractions in Casablanca</p>
+            
+            <!-- First line: 3 buttons -->
+            <div class="buttons-container">
+                <div class="buttons-row">
+                    <!-- Button 1 - Hassan II Mosque -->
+                    <div class="section-btn" data-modal="hassan-modal">
+                        <div class="btn-icon guide-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <h3>Hassan II Mosque</h3>
+                        <p>Largest mosque in Africa with stunning oceanfront location</p>
+                    </div>
+                    
+                    <!-- Button 2 - Old Medina -->
+                    <div class="section-btn" data-modal="medina-modal">
+                        <div class="btn-icon guide-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3>Old Medina</h3>
+                        <p>Traditional market with narrow streets and authentic shops</p>
+                    </div>
+                    
+                    <!-- Button 3 - Corniche -->
+                    <div class="section-btn" data-modal="corniche-modal">
+                        <div class="btn-icon guide-icon">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <h3>Corniche</h3>
+                        <p>Seafront promenade with beaches and ocean views</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Second line: 2 buttons -->
+            <div class="buttons-container" style="margin-top: 20px;">
+                <div class="buttons-row">
+                    <!-- Button 4 - Habous Quarter -->
+                    <div class="section-btn" data-modal="habous-modal">
+                        <div class="btn-icon guide-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Habous Quarter</h3>
+                        <p>The "new medina" with beautiful French-Moroccan architecture</p>
+                    </div>
+                    
+                    <!-- Button 5 - Mohammed V Square -->
+                    <div class="section-btn" data-modal="square-modal">
+                        <div class="btn-icon guide-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3>Mohammed V Square</h3>
+                        <p>Central square surrounded by government buildings</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- One Day Trip Section - 2 Day Trip Buttons (centered in same line) -->
+    <section id="daytrips">
+        <div class="section-container">
+            <h1>One Day Trip from Casablanca</h1>
+            
+            <p>Information about popular day trip destinations you can visit from Casablanca</p>
+            
+            <!-- Exactly 2 buttons in same line, centered -->
+            <div class="buttons-container">
+                <div class="buttons-row">
+                    <!-- Rabat Day Trip Button -->
+                    <div class="section-btn" data-modal="rabat-modal">
+                        <div class="btn-icon daytrip-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3>Day Trip to Rabat</h3>
+                        <p>Visit Morocco's capital city with historical sites and modern attractions</p>
+                    </div>
+                    
+                    <!-- Marrakech Day Trip Button -->
+                    <div class="section-btn" data-modal="marrakech-modal">
+                        <div class="btn-icon daytrip-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Day Trip to Marrakech</h3>
+                        <p>Experience the vibrant Red City with its famous square and bustling souks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - 3 Social Media Buttons (exactly 3 in one line) -->
+    <section id="contact">
+        <div class="section-container">
+            <h1>Contact Us</h1>
+            <p>Get in touch through your preferred platform</p>
+            
+            <!-- Exactly 3 buttons in one line -->
+            <div class="buttons-container">
+                <div class="buttons-row">
+                    <!-- WhatsApp Button -->
+                    <a href="https://wa.me/+212603928723" target="_blank" class="section-btn">
+                        <div class="btn-icon whatsapp-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>WhatsApp</h3>
+                        <p>Message us directly for quick responses</p>
+                    </a>
+                    
+                    <!-- Instagram Button -->
+                    <a href="https://instagram.com/eliass_sherlock" target="_blank" class="section-btn">
+                        <div class="btn-icon instagram-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3>Instagram</h3>
+                        <p>Follow us for photos and travel tips</p>
+                    </a>
+                    
+                    <!-- Airbnb Button -->
+                    <a href="https://airbnb.com/h/apartment-casablanca-morocco" target="_blank" class="section-btn">
+                        <div class="btn-icon airbnb-icon">
+                            <i class="fab fa-airbnb"></i>
+                        </div>
+                        <h3>Airbnb</h3>
+                        <p>Book our apartment on Airbnb</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Hassan II Mosque -->
+    <div id="hassan-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Hassan II Mosque</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="place-details">
+                    <div class="place-image">
+                        <i class="fas fa-mosque" style="font-size: 3rem; color: #27ae60;"></i>
+                    </div>
+                    <div class="place-info">
+                        <h3><i class="fas fa-mosque"></i> Hassan II Mosque</h3>
+                        <p>The Hassan II Mosque is the largest mosque in Africa and the 3rd largest in the world. Located partly on the Atlantic Ocean, its 210-meter minaret is the world's tallest. This architectural masterpiece can accommodate 105,000 worshippers and features exquisite Moroccan craftsmanship.</p>
+                        
+                        <div class="place-features">
+                            <div class="place-feature">
+                                <h4><i class="fas fa-calendar-alt"></i> Visiting Hours</h4>
+                                <p><strong>Summer (April 1 - Sept 30):</strong> 9:00 AM - 6:00 PM<br>
+                                   <strong>Winter (Oct 1 - March 31):</strong> 9:00 AM - 5:00 PM<br>
+                                   <strong>Closed on Fridays</strong> for non-Muslim visitors</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-ticket-alt"></i> Admission Fees</h4>
+                                <p><strong>Adults:</strong> 130 MAD<br>
+                                   <strong>Children (under 12):</strong> 30 MAD<br>
+                                   <strong>Students (with ID):</strong> 30 MAD<br>
+                                   <strong>Moroccan Residents:</strong> 60 MAD</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-clock"></i> Tour Information</h4>
+                                <p>• Guided tours only (mandatory)<br>
+                                   • Tour duration: ~1 hour<br>
+                                   • Languages: Arabic, French, English, Spanish<br>
+                                   • Last admission: 1 hour before closing</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-landmark"></i> Tour Includes</h4>
+                                <p>• Prayer Hall (main hall)<br>
+                                   • Ablution Room<br>
+                                   • Hammam (traditional bath)<br>
+                                   • Museum<br>
+                                   • Exterior areas and gardens</p>
+                            </div>
+                        </div>
+                        
+                        <div class="place-feature" style="margin-top: 20px; background-color: #e8f6f3; border-left: 4px solid #27ae60;">
+                            <h4><i class="fas fa-exclamation-circle"></i> Important Notes</h4>
+                            <p>• <strong>Dress code:</strong> Modest clothing required (shoulders and knees covered)<br>
+                               • <strong>Photography:</strong> Allowed except during prayer times<br>
+                               • <strong>Accessibility:</strong> Wheelchair accessible with ramps and elevators<br>
+                               • <strong>Reservations:</strong> Not required for individuals; groups should book in advance</p>
+                        </div>
+                        
+                        <div class="place-feature" style="margin-top: 15px; background-color: #fff8e1; border-left: 4px solid #f39c12;">
+                            <h4><i class="fas fa-star"></i> Highlights</h4>
+                            <p>• <strong>Retractable roof</strong> weighing 1,100 tons<br>
+                               • <strong>Glass floor</strong> section with view to sea below<br>
+                               • <strong>Laser beam</strong> from minaret pointing toward Mecca<br>
+                               • <strong>Heated floors</strong> in the prayer hall<br>
+                               • Materials: Marble from Agadir, cedar wood from Middle Atlas, granite from Tafraoute</p>
+                        </div>
+                        
+                        <div class="place-feature" style="margin-top: 15px; background-color: #e3f2fd; border-left: 4px solid #3498db;">
+                            <h4><i class="fas fa-map-marker-alt"></i> Location & Contact</h4>
+                            <p>• <strong>Address:</strong> Boulevard Sidi Mohammed Ben Abdallah, Casablanca<br>
+                               • <strong>Construction:</strong> 1986-1993 (7 years)<br>
+                               • <strong>Capacity:</strong> 25,000 indoors, 80,000 outdoors<br>
+                               • <strong>Architect:</strong> Michel Pinseau<br>
+                               • <strong>Workforce:</strong> 10,000 artisans worked on the project</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Old Medina -->
+    <div id="medina-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Old Medina of Casablanca</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="place-details">
+                    <div class="place-image">
+                        <i class="fas fa-store" style="font-size: 3rem; color: #27ae60;"></i>
+                    </div>
+                    <div class="place-info">
+                        <h3><i class="fas fa-store"></i> Old Medina</h3>
+                        <p>The Old Medina of Casablanca is the historic heart of the city, dating back to the 16th century. Unlike other Moroccan medinas, it's relatively small but packed with authentic shops, traditional crafts, and local life. Wander through its narrow alleys to discover hidden gems.</p>
+                        
+                        <div class="place-features">
+                            <div class="place-feature">
+                                <h4><i class="fas fa-shopping-cart"></i> What to Buy</h4>
+                                <p>Leather goods, pottery, traditional clothing, spices, and souvenirs</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-utensils"></i> Food to Try</h4>
+                                <p>Fresh seafood, traditional Moroccan pastries, mint tea</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-walking"></i> Exploration Time</h4>
+                                <p>2-3 hours for a complete experience</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-lightbulb"></i> Tip</h4>
+                                <p>Bargaining is expected in shops - start at 50% of asking price</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Corniche -->
+    <div id="corniche-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Corniche of Casablanca</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="place-details">
+                    <div class="place-image">
+                        <i class="fas fa-umbrella-beach" style="font-size: 3rem; color: #27ae60;"></i>
+                    </div>
+                    <div class="place-info">
+                        <h3><i class="fas fa-umbrella-beach"></i> Corniche</h3>
+                        <p>The Corniche is Casablanca's seaside promenade stretching along the Atlantic coast. This vibrant area features beaches, swimming pools, restaurants, and cafes. It's the perfect place for a stroll, to watch the sunset, or to enjoy fresh seafood with ocean views.</p>
+                        
+                        <div class="place-features">
+                            <div class="place-feature">
+                                <h4><i class="fas fa-sun"></i> Best Time to Visit</h4>
+                                <p>Late afternoon for sunset views or weekends for lively atmosphere</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-utensils"></i> Dining Options</h4>
+                                <p>Seafood restaurants, beach clubs, cafes with ocean views</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-swimming-pool"></i> Activities</h4>
+                                <p>Swimming, beach walks, people watching, dining</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-lightbulb"></i> Tip</h4>
+                                <p>Try the fresh grilled fish at one of the seaside restaurants</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Habous Quarter -->
+    <div id="habous-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Habous Quarter</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="place-details">
+                    <div class="place-image">
+                        <i class="fas fa-building" style="font-size: 3rem; color: #27ae60;"></i>
+                    </div>
+                    <div class="place-info">
+                        <h3><i class="fas fa-building"></i> Habous Quarter</h3>
+                        <p>The Habous Quarter, also known as the "New Medina," was built by the French in the 1930s. It features beautiful architecture blending French and Moroccan styles, with wide streets, arches, and traditional souks. This area is known for its artisanal workshops and high-quality crafts.</p>
+                        
+                        <div class="place-features">
+                            <div class="place-feature">
+                                <h4><i class="fas fa-hammer"></i> Crafts Available</h4>
+                                <p>Leather goods, traditional clothing, metalwork, pottery, books</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-landmark"></i> Notable Buildings</h4>
+                                <p>Mahkama du Pacha (court building), Royal Palace gates</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-camera"></i> Photo Spots</h4>
+                                <p>Beautiful architecture, colorful doors, traditional fountains</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-lightbulb"></i> Tip</h4>
+                                <p>Visit the traditional bakeries for fresh Moroccan bread</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Mohammed V Square -->
+    <div id="square-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Mohammed V Square</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="place-details">
+                    <div class="place-image">
+                        <i class="fas fa-landmark" style="font-size: 3rem; color: #27ae60;"></i>
+                    </div>
+                    <div class="place-info">
+                        <h3><i class="fas fa-landmark"></i> Mohammed V Square</h3>
+                        <p>Mohammed V Square is the administrative center of Casablanca, surrounded by important government buildings in Mauresque architecture (a blend of Moroccan and French styles). The square features beautiful fountains, gardens, and is often filled with pigeons. It's the heart of the modern city.</p>
+                        
+                        <div class="place-features">
+                            <div class="place-feature">
+                                <h4><i class="fas fa-building"></i> Surrounding Buildings</h4>
+                                <p>Wilaya (Prefecture), Palace of Justice, Central Post Office, Bank of Morocco</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-clock"></i> Best Time to Visit</h4>
+                                <p>Morning or late afternoon when the fountains are illuminated</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-dove"></i> Features</h4>
+                                <p>Large fountains, gardens, pigeons, impressive architecture</p>
+                            </div>
+                            <div class="place-feature">
+                                <h4><i class="fas fa-lightbulb"></i> Tip</h4>
+                                <p>Combine your visit with nearby United Nations Square and Arab League Park</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Rabat -->
+    <div id="rabat-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Day Trip to Rabat - Places to Visit</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Rabat, Morocco's capital, offers a blend of historical sites and modern attractions. Here are the top places to visit:</p>
+                
+                <div class="places-list">
+                    <div class="place-card">
+                        <h4><i class="fas fa-tower"></i> Hassan Tower</h4>
+                        <p>Unfinished minaret of what would have been the world's largest mosque, dating back to the 12th century.</p>
+                    </div>
+                    
+                    <div class="place-card">
+                        <h4><i class="fas fa-door-open"></i> Kasbah of the Udayas</h4>
+                        <p>Beautiful blue and white fortress overlooking the Atlantic Ocean, with stunning gardens and narrow streets.</p>
+                    </div>
+                    
+                    <div class="place-card">
+                        <h4><i class="fas fa-gem"></i> Chellah Necropolis</h4>
+                        <p>Ancient Roman and Islamic ruins with gardens, storks' nests, and historical monuments.</p>
+                    </div>
+                    
+                    <div class="place-card">
+                        <h4><i class="fas fa-landmark"></i> Royal Palace</h4>
+                        <p>Official residence of the King of Morocco, with impressive architecture and beautiful grounds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Marrakech -->
+    <div id="marrakech-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Day Trip to Marrakech - Places to Visit</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Marrakech, the "Red City," is famous for its vibrant culture, historical sites, and bustling markets. Here are the top places to visit:</p>
+                
+                <div class="places-list">
+                    <div class="place-card">
+                        <h4><i class="fas fa-square"></i> Jemaa el-Fnaa Square</h4>
+                        <p>Famous main square with food stalls, musicians, storytellers, and snake charmers.</p>
+                    </div>
+                    
+                    <div class="place-card">
+                        <h4><i class="fas fa-archway"></i> Koutoubia Mosque</h4>
+                        <p>Largest mosque in Marrakech with a stunning 77-meter minaret, built in the 12th century.</p>
+                    </div>
+                    
+                    <div class="place-card">
+                        <h4><i class="fas fa-palace"></i> Bahia Palace</h4>
+                        <p>19th-century palace with beautiful gardens, courtyards, and intricate Moroccan architecture.</p>
+                    </div>
+                    
+                    <div class="place-card">
+                        <h4><i class="fas fa-tree"></i> Majorelle Garden</h4>
+                        <p>Vibrant botanical garden created by French painter Jacques Majorelle, with a striking blue villa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                // Don't prevent default for external links
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Set Stay as active by default (first section)
+        document.addEventListener('DOMContentLoaded', function() {
+            const stayLink = document.querySelector('a[href="#stay"]');
+            if (stayLink) {
+                stayLink.classList.add('active');
+            }
+        });
+        
+        // Update active navigation link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= (sectionTop - 120)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Navigation background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                nav.style.padding = '10px 0';
+                nav.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                nav.style.padding = '15px 0';
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Handle guide section button clicks to show modals
+        document.querySelectorAll('#guide .section-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const modalId = this.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Handle day trip button clicks to show modals
+        document.querySelectorAll('#daytrips .section-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const modalId = this.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Close modal functionality
+        document.querySelectorAll('.close-modal').forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                if (modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Close modal when clicking outside the modal content
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Handle social button clicks
+        document.querySelectorAll('#contact .section-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Check if it's a placeholder link (Instagram in this case)
+                if (this.getAttribute('href') === 'https://instagram.com/casablanca101') {
+                    console.log('Instagram button clicked - update with your real Instagram URL');
+                }
+                if (this.getAttribute('href') === 'https://wa.me/212XXXXXXXXX') {
+                    console.log('WhatsApp button clicked - update with your real WhatsApp number');
+                }
+            });
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (modal.style.display === 'flex') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
